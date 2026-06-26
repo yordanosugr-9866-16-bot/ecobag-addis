@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoBag Addis — Eco-Friendly Paper Bags</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+/* ============================================================
+   EcoBag Addis — Main Stylesheet
+   Palette: Forest Green · Eco Cream · Earth Gold · Sage · Charcoal
+   ============================================================ */
+
+:root {
+  --forest:      #1B5E3B;
+  --forest-dark: #0F3D25;
+  --forest-light:#2E8B57;
+  --sage:        #6B9E76;
+  --cream:       #F7F4EC;
+  --parchment:   #EDE8DC;
+  --earth:       #8B6914;
+  --gold:        #D4A017;
+  --gold-light:  #F0C040;
+  --charcoal:    #1A1A1A;
+  --text-dark:   #1F2E1F;
+  --text-mid:    #4A5E4A;
+  --text-light:  #7A8E7A;
+  --white:       #FFFFFF;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  --radius-sm:  6px;
+  --radius-md:  14px;
+  --radius-lg:  24px;
+  --radius-xl:  40px;
+
+  --shadow-sm:  0 2px 10px rgba(27,94,59,0.08);
+  --shadow-md:  0 8px 30px rgba(27,94,59,0.14);
+  --shadow-lg:  0 20px 60px rgba(27,94,59,0.20);
+
+  --t: 0.3s ease;
+  --max-w: 1180px;
+  --pad: 100px 24px;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img, video, svg { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--sage); border-radius: 4px; }
+
+/* ---------- Utility ---------- */
+.center { text-align: center; }
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--forest-light);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--forest-dark);
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--forest-light);
+}
+.section-intro {
+  font-size: 1.05rem;
+  color: var(--text-mid);
+  max-width: 600px;
+  margin: 0 auto 56px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all var(--t);
+  text-align: center;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--forest); color: var(--white); border-color: var(--forest); }
+.btn-primary:hover { background: var(--forest-dark); border-color: var(--forest-dark); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn-outline { background: transparent; color: var(--forest); border-color: var(--forest); }
+.btn-outline:hover { background: var(--forest); color: var(--white); transform: translateY(-2px); }
+.btn-outline-dark { background: transparent; color: var(--forest-dark); border-color: var(--forest-dark); }
+.btn-outline-dark:hover { background: var(--forest-dark); color: var(--white); transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--text-mid); border-color: var(--parchment); }
+.btn-ghost:hover { border-color: var(--text-mid); color: var(--text-dark); }
+.btn-sm { padding: 9px 20px; font-size: 0.85rem; }
+.btn-lg { padding: 16px 48px; font-size: 1.05rem; }
+
+/* ---------- Section ---------- */
+.section { padding: var(--pad); }
+.section-inner { max-width: var(--max-w); margin: 0 auto; }
+.section:nth-child(even) { background: var(--white); }
+
+/* ---------- Reveal animation ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(15,61,37,0.97);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.logo-leaf { font-size: 1.6rem; }
+.logo-text em { color: var(--gold-light); font-style: italic; }
+.main-nav { display: flex; align-items: center; gap: 6px; }
+.nav-link {
+  color: rgba(255,255,255,0.82);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all var(--t);
+}
+.nav-link:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+.nav-cta { background: var(--gold); color: var(--forest-dark) !important; font-weight: 700; }
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all var(--t); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  background: linear-gradient(135deg, var(--forest-dark) 0%, #1B5E3B 55%, #2E7D52 100%);
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.shape-1 { width: 500px; height: 500px; top: -150px; right: -100px; }
+.shape-2 { width: 300px; height: 300px; bottom: 100px; left: -50px; }
+.shape-3 { width: 200px; height: 200px; top: 40%; right: 30%; background: rgba(212,160,23,0.06); }
+
+.hero-content { z-index: 1; padding: 0 20px; }
+.hero-pill {
+  display: inline-block;
+  background: rgba(212,160,23,0.2);
+  color: var(--gold-light);
+  border: 1px solid rgba(212,160,23,0.3);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 40px;
+  line-height: 1.7;
+  max-width: 480px;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+.hero-actions .btn-outline {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.4);
+}
+.hero-actions .btn-outline:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+
+.hero-trust { display: flex; gap: 24px; flex-wrap: wrap; }
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.trust-icon { font-size: 1.1rem; }
+
+/* ---- Bag Mockup ---- */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.bag-mockup {
+  position: relative;
+  width: 260px;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-16px); }
+}
+.bag-body {
+  width: 220px;
+  height: 260px;
+  background: linear-gradient(160deg, #F7F4EC 0%, #EDE8DC 100%);
+  border-radius: 12px 12px 4px 4px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5);
+}
+.bag-logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--forest-dark);
+  text-align: center;
+  line-height: 1.2;
+}
+.bag-logo small { font-size: 0.75rem; color: var(--sage); font-weight: 400; }
+.bag-handle {
+  position: absolute;
+  top: -28px;
+  width: 50px;
+  height: 30px;
+  border: 4px solid var(--forest-dark);
+  border-bottom: none;
+  border-radius: 30px 30px 0 0;
+}
+.bag-handle.left  { left: 40px; }
+.bag-handle.right { right: 40px; }
+.bag-shadow {
+  width: 180px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%);
+  margin: 8px auto 0;
+}
+.float-leaf {
+  position: absolute;
+  font-size: 1.6rem;
+  animation: leafFloat 3s ease-in-out infinite;
+}
+.leaf-a { top: 20px; right: -20px; animation-delay: 0s; }
+.leaf-b { top: 100px; left: -30px; animation-delay: 0.8s; font-size: 1.2rem; }
+.leaf-c { bottom: 60px; right: -10px; animation-delay: 1.6s; font-size: 1rem; }
+@keyframes leafFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-10px) rotate(10deg); }
+}
+
+.hero-wave {
+  grid-column: 1 / -1;
+  margin-top: 48px;
+  height: 60px;
+}
+.hero-wave svg { width: 100%; height: 100%; }
+.hero-wave path { fill: var(--cream); }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.about-text p { color: var(--text-mid); margin-bottom: 16px; }
+.about-text strong { color: var(--forest-dark); }
+.about-law {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: rgba(27,94,59,0.06);
+  border-left: 4px solid var(--forest-light);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 16px 20px;
+  margin-top: 28px;
+}
+.law-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+.about-law strong { display: block; color: var(--forest-dark); margin-bottom: 6px; font-size: 0.95rem; }
+.about-law p { font-size: 0.88rem; color: var(--text-mid); margin: 0; }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(27,94,59,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: box-shadow var(--t), transform var(--t);
+}
+.stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.stat-card.accent { background: var(--forest); color: var(--white); }
+.stat-number { font-family: var(--font-display); font-size: 2.4rem; font-weight: 900; color: var(--forest); line-height: 1; }
+.stat-card.accent .stat-number { color: var(--gold-light); }
+.stat-label { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; }
+.stat-card.accent .stat-label { color: rgba(255,255,255,0.7); }
+.mission-card {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--forest-dark), var(--forest-light));
+  border-radius: var(--radius-md);
+  padding: 28px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mission-quote {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--white);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PRODUCTS
+   ============================================================ */
+.products { background: var(--parchment); }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(27,94,59,0.07);
+  position: relative;
+  transition: all var(--t);
+}
+.product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.product-img {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, rgba(27,94,59,0.08), rgba(27,94,59,0.15));
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+.prod-tag {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: var(--forest);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+}
+.prod-tag.eco { background: var(--gold); color: var(--forest-dark); }
+.product-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--forest-dark);
+  margin-bottom: 10px;
+}
+.product-card p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 16px; line-height: 1.6; }
+.prod-features { list-style: none; margin-bottom: 24px; }
+.prod-features li { font-size: 0.85rem; color: var(--forest-light); padding: 3px 0; font-weight: 500; }
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+.how { background: var(--forest-dark); }
+.how .eyebrow { color: var(--gold-light); }
+.how .section-title { color: var(--white); }
+.how .section-intro { color: rgba(255,255,255,0.65); }
+
+.steps {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+.step {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 36px 28px;
+  flex: 1;
+  min-width: 200px;
+  max-width: 260px;
+  text-align: center;
+  transition: background var(--t);
+}
+.step:hover { background: rgba(255,255,255,0.1); }
+.step-num { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 12px; }
+.step-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.step h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+.step p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+.step-arrow { font-size: 1.6rem; color: var(--gold); align-self: center; padding: 0 8px; flex-shrink: 0; }
+
+/* ============================================================
+   CUSTOMERS
+   ============================================================ */
+.customer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 16px;
+}
+.customer-card {
+  text-align: center;
+  padding: 40px 28px;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(27,94,59,0.07);
+  transition: all var(--t);
+}
+.customer-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.customer-icon { font-size: 3rem; margin-bottom: 20px; }
+.customer-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 12px; }
+.customer-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.6; }
+
+/* ============================================================
+   WHY US
+   ============================================================ */
+.why { background: var(--parchment); }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.why-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(27,94,59,0.07);
+  transition: all var(--t);
+  position: relative;
+  overflow: hidden;
+}
+.why-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--forest), var(--gold));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--t);
+}
+.why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.why-card:hover::after { transform: scaleX(1); }
+.why-icon { font-size: 2rem; display: block; margin-bottom: 16px; }
+.why-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 10px; }
+.why-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.price-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(27,94,59,0.1);
+  position: relative;
+  transition: all var(--t);
+}
+.price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.price-card.featured {
+  background: var(--forest-dark);
+  border-color: var(--forest);
+  transform: scale(1.03);
+}
+.price-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+.price-badge {
+  position: absolute;
+  top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--forest-dark);
+  font-size: 0.75rem; font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+  letter-spacing: 0.06em;
+}
+.price-tier { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--forest-light); margin-bottom: 8px; }
+.price-card.featured .price-tier { color: var(--gold-light); }
+.price-amount { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--forest-dark); margin-bottom: 4px; }
+.price-card.featured .price-amount { color: var(--white); }
+.price-sub { font-size: 0.82rem; color: var(--text-light); margin-bottom: 28px; }
+.price-card.featured .price-sub { color: rgba(255,255,255,0.55); }
+.price-features { list-style: none; margin-bottom: 32px; }
+.price-features li { font-size: 0.88rem; color: var(--text-mid); padding: 6px 0; border-bottom: 1px solid var(--parchment); }
+.price-card.featured .price-features li { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.1); }
+.price-features li:last-child { border-bottom: none; }
+
+/* ============================================================
+   ORDER FORM
+   ============================================================ */
+.order { background: var(--parchment); }
+.order-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 56px 48px;
+  box-shadow: var(--shadow-lg);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.87rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.02em;
+}
+.req { color: var(--forest-light); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid #D5E0D5;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: var(--cream);
+  outline: none;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--forest-light);
+  box-shadow: 0 0 0 3px rgba(46,139,87,0.12);
+  background: var(--white);
+}
+.form-group input.error { border-color: #C0392B; }
+.err { font-size: 0.8rem; color: #C0392B; min-height: 16px; }
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-group select { cursor: pointer; }
+
+.checkbox-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 4px; }
+.check-label {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.9rem; color: var(--text-mid);
+  cursor: pointer; font-weight: 400;
+}
+.check-label input { width: 16px; height: 16px; accent-color: var(--forest); cursor: pointer; }
+
+.form-footer {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--parchment);
+}
+
+.form-success {
+  margin-top: 24px;
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  text-align: center;
+  display: none;
+  font-size: 1rem;
+}
+.form-success.visible {
+  display: block;
+  background: rgba(27,94,59,0.08);
+  color: var(--forest-dark);
+  border: 1.5px solid var(--forest-light);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer { background: var(--forest-dark); color: var(--white); padding-top: 0; }
+.footer-wave { height: 50px; }
+.footer-wave svg { width: 100%; height: 100%; }
+.footer-wave path { fill: var(--parchment); }
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+.footer-brand .logo-leaf { font-size: 2rem; }
+.footer-brand .logo-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--white); }
+.footer-brand .logo-text em { color: var(--gold-light); }
+.footer-brand p { color: rgba(255,255,255,0.55); font-size: 0.88rem; margin-top: 12px; line-height: 1.6; max-width: 260px; }
+.social-links { display: flex; gap: 12px; margin-top: 20px; }
+.social-links a {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  transition: background var(--t);
+  text-decoration: none;
+}
+.social-links a:hover { background: var(--gold); }
+.footer-col h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--gold-light); margin-bottom: 18px; }
+.footer-col a, .footer-col p {
+  display: block;
+  color: rgba(255,255,255,0.55);
+  font-size: 0.88rem;
+  padding: 4px 0;
+  transition: color var(--t);
+  line-height: 1.8;
+}
+.footer-col a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  text-align: center;
+}
+.footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.38); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .steps { flex-wrap: wrap; gap: 16px; }
+  .step-arrow { display: none; }
+  .step { max-width: 240px; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .price-card.featured { transform: none; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 860px) {
+  :root { --pad: 72px 24px; }
+  .hero { grid-template-columns: 1fr; min-height: auto; padding: 60px 24px 0; text-align: center; }
+  .hero-visual { order: -1; margin-bottom: 16px; }
+  .bag-mockup { width: 180px; }
+  .bag-body { width: 160px; height: 190px; }
+  .hero-sub { margin: 0 auto 32px; }
+  .hero-actions { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .two-col { grid-template-columns: 1fr; gap: 40px; }
+  .customer-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .hero-wave { height: 36px; }
+}
+
+@media (max-width: 640px) {
+  .nav-toggle { display: flex; }
+  .main-nav {
+    display: none;
+    position: absolute; top: 68px; left: 0; right: 0;
+    background: var(--forest-dark);
+    flex-direction: column; align-items: stretch;
+    padding: 12px 16px 20px;
+    gap: 4px;
+    border-bottom: 2px solid var(--gold);
+    box-shadow: var(--shadow-md);
+  }
+  .main-nav.open { display: flex; }
+  .nav-link { text-align: left; padding: 12px 16px; }
+  .nav-cta { margin-top: 8px; text-align: center; }
+  .form-grid { grid-template-columns: 1fr; }
+  .order-form { padding: 32px 24px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .checkbox-row { flex-direction: column; gap: 12px; }
+  .form-footer { flex-direction: column; }
+  .btn-lg { width: 100%; }
+  .hero .btn { width: 100%; }
+  .hero-actions { flex-direction: column; align-items: center; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a href="#top" class="logo">
+        <span class="logo-leaf" aria-hidden="true">🌿</span>
+        <span class="logo-text">EcoBag <em>Addis</em></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="#about"    class="nav-link">About</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#how"      class="nav-link">How It Works</a>
+        <a href="#why"      class="nav-link">Why Us</a>
+        <a href="#order"    class="nav-link nav-cta">Order Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-pill">🌍 Ethiopia's Eco-Friendly Packaging Solution</span>
+      <h1 class="hero-title">
+        Paper Bags.<br>
+        <em>Better Planet.</em><br>
+        Delivered to You.
+      </h1>
+      <p class="hero-sub">
+        EcoBag Addis provides biodegradable, customizable paper bags — 
+        helping businesses in Addis Ababa and beyond replace plastic for good.
+      </p>
+      <div class="hero-actions">
+        <a href="#order"    class="btn btn-primary">Place an Order</a>
+        <a href="#products" class="btn btn-outline">View Products</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-icon">♻️</span><span>100% Biodegradable</span></div>
+        <div class="trust-item"><span class="trust-icon">🎨</span><span>Fully Customizable</span></div>
+        <div class="trust-item"><span class="trust-icon">🚚</span><span>Addis-Wide Delivery</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="bag-mockup">
+        <div class="bag-body">
+          <div class="bag-logo">EcoBag<br><small>Addis</small></div>
+          <div class="bag-handle left"></div>
+          <div class="bag-handle right"></div>
+        </div>
+        <div class="bag-shadow"></div>
+        <div class="float-leaf leaf-a">🌿</div>
+        <div class="float-leaf leaf-b">🍃</div>
+        <div class="float-leaf leaf-c">🌱</div>
+      </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section" id="about">
+    <div class="section-inner two-col">
+      <div class="about-text reveal">
+        <p class="eyebrow">Who We Are</p>
+        <h2 class="section-title">Sustainable Packaging<br>Born in Addis Ababa</h2>
+        <p>EcoBag Addis is a small-scale e-commerce business dedicated to providing <strong>environmentally friendly paper bags</strong> as a sustainable alternative to plastic packaging. We were founded in response to growing environmental concerns about plastic waste — which pollutes streets, rivers, and drainage systems across Ethiopia.</p>
+        <p>Our online platform lets customers browse, compare, and order high-quality paper bags with full customization options — from logos to sizes — without ever leaving their home or office.</p>
+        <div class="about-law">
+          <div class="law-icon">⚖️</div>
+          <div>
+            <strong>Backed by Law</strong>
+            <p>Under Ethiopia's Solid Waste Management Proclamation 1383/2017, the production, import, sale, and use of single-use plastic bags is now prohibited. EcoBag Addis is your compliant, convenient alternative.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Customer Segments</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">4+</span>
+          <span class="stat-label">Revenue Streams</span>
+        </div>
+        <div class="stat-card accent">
+          <span class="stat-number">0%</span>
+          <span class="stat-label">Plastic. Always.</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">B2C</span>
+          <span class="stat-label">Online Platform</span>
+        </div>
+        <div class="mission-card">
+          <p class="mission-quote">"Every bag tells a story of a cleaner, greener Addis Ababa."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS ===== -->
+  <section class="products section" id="products">
+    <div class="section-inner">
+      <p class="eyebrow center">What We Offer</p>
+      <h2 class="section-title center reveal">Our Paper Bag Products</h2>
+      <p class="section-intro reveal">Every bag is crafted with care — biodegradable, strong, and ready to carry your brand.</p>
+      <div class="products-grid">
+
+        <article class="product-card reveal">
+          <div class="product-img"><span class="prod-emoji">🛍️</span></div>
+          <div class="prod-tag">Best Seller</div>
+          <h3>Standard Kraft Bag</h3>
+          <p>Classic brown kraft paper bags, ideal for retail shops, markets, and everyday packaging. Strong, recyclable, and biodegradable.</p>
+          <ul class="prod-features">
+            <li>✓ Multiple sizes available</li>
+            <li>✓ Twisted paper handle</li>
+            <li>✓ Bulk discount available</li>
+          </ul>
+          <a href="#order" class="btn btn-sm">Order Now</a>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-img"><span class="prod-emoji">🎁</span></div>
+          <div class="prod-tag eco">Custom Branded</div>
+          <h3>Logo-Printed Bag</h3>
+          <p>Showcase your brand on every bag. Custom logo, colors, and design printed on premium paper — perfect for boutiques, cafes, and events.</p>
+          <ul class="prod-features">
+            <li>✓ Full-color logo printing</li>
+            <li>✓ Custom sizes & colors</li>
+            <li>✓ Ribbon or rope handles</li>
+          </ul>
+          <a href="#order" class="btn btn-sm">Order Now</a>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-img"><span class="prod-emoji">🍽️</span></div>
+          <div class="prod-tag">Food-Safe</div>
+          <h3>Food-Grade Bag</h3>
+          <p>Grease-resistant paper bags specially designed for restaurants, cafes, and bakeries. Safe for direct food contact.</p>
+          <ul class="prod-features">
+            <li>✓ Grease-resistant lining</li>
+            <li>✓ Flat bottom design</li>
+            <li>✓ FDA-equivalent safe</li>
+          </ul>
+          <a href="#order" class="btn btn-sm">Order Now</a>
+        </article>
+
+        <article class="product-card reveal">
+          <div class="product-img"><span class="prod-emoji">🎊</span></div>
+          <div class="prod-tag eco">Event Special</div>
+          <h3>Gift & Event Bag</h3>
+          <p>Elegant paper bags for weddings, birthdays, corporate events, and souvenirs. Add a personal touch with custom messages or names.</p>
+          <ul class="prod-features">
+            <li>✓ Decorative prints</li>
+            <li>✓ Satin ribbon handles</li>
+            <li>✓ Minimum order: 50 pcs</li>
+          </ul>
+          <a href="#order" class="btn btn-sm">Order Now</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how section" id="how">
+    <div class="section-inner">
+      <p class="eyebrow center">Simple Process</p>
+      <h2 class="section-title center reveal">How It Works</h2>
+      <p class="section-intro reveal">From browsing to delivery — ordering your eco bags takes just four simple steps.</p>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <div class="step-icon">🔍</div>
+          <h3>Browse & Choose</h3>
+          <p>Explore our product catalog and choose the bag type, size, and quantity that fits your needs.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <div class="step-icon">🎨</div>
+          <h3>Customize</h3>
+          <p>Upload your logo, choose colors, and specify sizes. Our team will send you a design preview.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <div class="step-icon">💳</div>
+          <h3>Place & Pay</h3>
+          <p>Submit your order form and pay via bank transfer, mobile money, or cash on delivery.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step reveal">
+          <div class="step-num">04</div>
+          <div class="step-icon">🚚</div>
+          <h3>Receive Delivery</h3>
+          <p>We deliver to your door across Addis Ababa. Bulk orders receive priority handling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TARGET CUSTOMERS ===== -->
+  <section class="customers section" id="customers">
+    <div class="section-inner">
+      <p class="eyebrow center">Who We Serve</p>
+      <h2 class="section-title center reveal">Built for Every Customer</h2>
+      <div class="customer-grid">
+        <div class="customer-card reveal">
+          <div class="customer-icon">🏪</div>
+          <h3>Small & Medium Businesses</h3>
+          <p>Retail shops, cafes, supermarkets, and boutiques that need reliable, affordable daily packaging materials.</p>
+        </div>
+        <div class="customer-card reveal">
+          <div class="customer-icon">🎉</div>
+          <h3>Event Organizers</h3>
+          <p>Weddings, birthday parties, and corporate gatherings needing customized gift and souvenir bags.</p>
+        </div>
+        <div class="customer-card reveal">
+          <div class="customer-icon">🌱</div>
+          <h3>NGOs & Eco-Conscious Individuals</h3>
+          <p>Organizations and individuals who prioritize sustainable, environmentally responsible choices in their daily lives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY ECOBAG ===== -->
+  <section class="why section" id="why">
+    <div class="section-inner">
+      <p class="eyebrow center">Our Advantage</p>
+      <h2 class="section-title center reveal">Why Choose EcoBag Addis?</h2>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <span class="why-icon">♻️</span>
+          <h3>100% Eco-Friendly</h3>
+          <p>All bags are biodegradable and reusable — you reduce plastic waste with every order.</p>
+        </div>
+        <div class="why-card reveal">
+          <span class="why-icon">✏️</span>
+          <h3>Full Customization</h3>
+          <p>Your logo, your colors, your size. We make packaging that reflects your brand identity.</p>
+        </div>
+        <div class="why-card reveal">
+          <span class="why-icon">💰</span>
+          <h3>Competitive Pricing</h3>
+          <p>Bulk discounts, transparent pricing, and no hidden fees — sustainable packaging that fits your budget.</p>
+        </div>
+        <div class="why-card reveal">
+          <span class="why-icon">📱</span>
+          <h3>Order Online</h3>
+          <p>No need to visit a store. Browse, customize, and order from anywhere, anytime.</p>
+        </div>
+        <div class="why-card reveal">
+          <span class="why-icon">⚡</span>
+          <h3>Fast Turnaround</h3>
+          <p>Standard orders fulfilled within days. We respect your time and deadlines.</p>
+        </div>
+        <div class="why-card reveal">
+          <span class="why-icon">⚖️</span>
+          <h3>Legally Compliant</h3>
+          <p>Using EcoBag Addis keeps your business compliant with Ethiopia's plastic ban proclamation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="pricing section" id="pricing">
+    <div class="section-inner">
+      <p class="eyebrow center">Transparent Pricing</p>
+      <h2 class="section-title center reveal">Simple, Affordable Plans</h2>
+      <p class="section-intro reveal">All prices in Ethiopian Birr (ETB). Customization and bulk discounts available.</p>
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <div class="price-tier">Starter</div>
+          <div class="price-amount">Contact Us</div>
+          <div class="price-sub">Small quantities · 1–99 bags</div>
+          <ul class="price-features">
+            <li>✓ Standard kraft bags</li>
+            <li>✓ Multiple sizes</li>
+            <li>✓ Basic plain finish</li>
+            <li>✓ Addis delivery</li>
+          </ul>
+          <a href="#order" class="btn btn-outline-dark">Get Quote</a>
+        </div>
+        <div class="price-card featured reveal">
+          <div class="price-badge">Most Popular</div>
+          <div class="price-tier">Business</div>
+          <div class="price-amount">Bulk Discount</div>
+          <div class="price-sub">100–999 bags · best value</div>
+          <ul class="price-features">
+            <li>✓ All bag types</li>
+            <li>✓ Custom logo printing</li>
+            <li>✓ Priority production</li>
+            <li>✓ Free design preview</li>
+            <li>✓ Priority delivery</li>
+          </ul>
+          <a href="#order" class="btn btn-primary">Order Now</a>
+        </div>
+        <div class="price-card reveal">
+          <div class="price-tier">Enterprise</div>
+          <div class="price-amount">Best Rate</div>
+          <div class="price-sub">1000+ bags · corporate</div>
+          <ul class="price-features">
+            <li>✓ All bag types</li>
+            <li>✓ Full branding package</li>
+            <li>✓ Dedicated account rep</li>
+            <li>✓ B2B invoicing</li>
+            <li>✓ Scheduled deliveries</li>
+          </ul>
+          <a href="#order" class="btn btn-outline-dark">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ORDER FORM ===== -->
+  <section class="order section" id="order">
+    <div class="section-inner">
+      <p class="eyebrow center">Get Started</p>
+      <h2 class="section-title center reveal">Place Your Order</h2>
+      <p class="section-intro reveal">Fill out the form below and our team will get back to you within 24 hours with a quote and design preview.</p>
+
+      <form class="order-form reveal" id="orderForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="fullName">Full Name <span class="req">*</span></label>
+            <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+            <span class="err" id="fullNameErr"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="bizName">Business / Organization Name</label>
+            <input type="text" id="bizName" name="bizName" placeholder="Your business name (optional)">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" required placeholder="+251 9XX XXX XXX">
+            <span class="err" id="phoneErr"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+            <span class="err" id="emailErr"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="bagType">Bag Type <span class="req">*</span></label>
+            <select id="bagType" name="bagType" required>
+              <option value="">— Select a bag type —</option>
+              <option value="kraft">Standard Kraft Bag</option>
+              <option value="branded">Logo-Printed Custom Bag</option>
+              <option value="food">Food-Grade Bag</option>
+              <option value="gift">Gift & Event Bag</option>
+              <option value="mixed">Mixed / Multiple Types</option>
+            </select>
+            <span class="err" id="bagTypeErr"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Estimated Quantity <span class="req">*</span></label>
+            <select id="quantity" name="quantity" required>
+              <option value="">— Select quantity —</option>
+              <option value="1-99">1–99 bags (Starter)</option>
+              <option value="100-499">100–499 bags (Business)</option>
+              <option value="500-999">500–999 bags (Business+)</option>
+              <option value="1000+">1000+ bags (Enterprise)</option>
+            </select>
+            <span class="err" id="quantityErr"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="bagSize">Preferred Size</label>
+            <select id="bagSize" name="bagSize">
+              <option value="">— Select size —</option>
+              <option value="small">Small (gift / snack size)</option>
+              <option value="medium">Medium (standard retail)</option>
+              <option value="large">Large (boutique / grocery)</option>
+              <option value="custom">Custom dimensions</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="delivery">Delivery Area</label>
+            <input type="text" id="delivery" name="delivery" placeholder="Your location in Addis Ababa">
+          </div>
+
+          <div class="form-group full">
+            <label>Customization Needed?</label>
+            <div class="checkbox-row">
+              <label class="check-label"><input type="checkbox" name="custom" value="logo"> Logo printing</label>
+              <label class="check-label"><input type="checkbox" name="custom" value="colors"> Custom colors</label>
+              <label class="check-label"><input type="checkbox" name="custom" value="text"> Custom text / message</label>
+              <label class="check-label"><input type="checkbox" name="custom" value="handle"> Special handle type</label>
+            </div>
+          </div>
+
+          <div class="form-group full">
+            <label for="message">Additional Notes or Requirements</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell us about your design ideas, deadlines, or any special requirements..."></textarea>
+          </div>
+
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn-primary btn-lg">Submit Order Request 🌿</button>
+          <button type="reset"  class="btn btn-ghost">Clear Form</button>
+        </div>
+
+        <div class="form-success" id="formSuccess" role="alert" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C360,60 1080,0 1440,30 L1440,0 L0,0 Z"/></svg>
+    </div>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-leaf">🌿</span>
+        <span class="logo-text">EcoBag <em>Addis</em></span>
+        <p>Sustainable packaging for a greener Addis Ababa and beyond.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="Telegram">✈️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About Us</a>
+        <a href="#products">Products</a>
+        <a href="#how">How It Works</a>
+        <a href="#why">Why EcoBag</a>
+        <a href="#order">Order Now</a>
+      </div>
+      <div class="footer-col">
+        <h4>Our Products</h4>
+        <a href="#products">Standard Kraft Bags</a>
+        <a href="#products">Logo-Printed Bags</a>
+        <a href="#products">Food-Grade Bags</a>
+        <a href="#products">Gift & Event Bags</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>📍 Addis Ababa, Ethiopia</p>
+        <p>📞 +251 9XX XXX XXX</p>
+        <p>📧 hello@ecobagaddis.et</p>
+        <p>⏰ Mon–Sat, 8am–6pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> EcoBag Addis. All rights reserved. | Making Addis greener, one bag at a time. 🌿</p>
+    </div>
+  </footer>
+
+  <script>
+/* ============================================================
+   EcoBag Addis — Main Script
+   ============================================================ */
+
+/* ---- 1. Footer Year ---- */
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ---- 2. Mobile Nav Toggle ---- */
+const navToggle = document.getElementById('navToggle');
+const mainNav   = document.getElementById('mainNav');
+
+if (navToggle && mainNav) {
+  navToggle.addEventListener('click', () => {
+    const open = mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+    const spans = navToggle.querySelectorAll('span');
+    if (open) {
+      spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+      spans[1].style.opacity   = '0';
+      spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    } else {
+      spans[0].style.transform = '';
+      spans[1].style.opacity   = '';
+      spans[2].style.transform = '';
+    }
+  });
+
+  mainNav.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.querySelectorAll('span').forEach(s => {
+        s.style.transform = '';
+        s.style.opacity   = '';
+      });
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!navToggle.contains(e.target) && !mainNav.contains(e.target)) {
+      mainNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.querySelectorAll('span').forEach(s => {
+        s.style.transform = '';
+        s.style.opacity   = '';
+      });
+    }
+  });
+}
+
+/* ---- 3. Active Nav on Scroll ---- */
+const sections = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('.nav-link[href^="#"]');
+
+function setActiveNav() {
+  const scrollY = window.scrollY + 120;
+  let current = '';
+  sections.forEach(sec => {
+    if (scrollY >= sec.offsetTop) current = sec.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+  });
+}
+window.addEventListener('scroll', setActiveNav, { passive: true });
+
+/* ---- 4. Scroll Reveal ---- */
+function initReveal() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const siblings = entry.target.parentElement.querySelectorAll('.reveal');
+        let delay = 0;
+        siblings.forEach((sib, idx) => {
+          if (sib === entry.target) delay = idx * 80;
+        });
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initReveal);
+} else {
+  initReveal();
+}
+
+/* ---- 5. Header scroll shadow ---- */
+const siteHeader = document.querySelector('.site-header');
+window.addEventListener('scroll', () => {
+  if (siteHeader) {
+    siteHeader.style.boxShadow = window.scrollY > 10
+      ? '0 4px 24px rgba(0,0,0,0.25)'
+      : '0 2px 20px rgba(0,0,0,0.2)';
+  }
+}, { passive: true });
+
+/* ---- 6. Order Form Validation ---- */
+const orderForm  = document.getElementById('orderForm');
+const formSuccess = document.getElementById('formSuccess');
+
+const rules = {
+  fullName: { id: 'fullName', errId: 'fullNameErr', msg: 'Please enter your full name.' },
+  phone:    { id: 'phone',    errId: 'phoneErr',    msg: 'Please enter a valid phone number.' },
+  bagType:  { id: 'bagType',  errId: 'bagTypeErr',  msg: 'Please select a bag type.' },
+  quantity: { id: 'quantity', errId: 'quantityErr', msg: 'Please select a quantity range.' },
+};
+
+function showErr(field) {
+  const el = document.getElementById(field.id);
+  const er = document.getElementById(field.errId);
+  if (el) el.classList.add('error');
+  if (er) er.textContent = field.msg;
+}
+function clearErr(fieldId, errId) {
+  const el = document.getElementById(fieldId);
+  const er = document.getElementById(errId);
+  if (el) el.classList.remove('error');
+  if (er) er.textContent = '';
+}
+
+Object.values(rules).forEach(f => {
+  const el = document.getElementById(f.id);
+  if (el) el.addEventListener('input', () => clearErr(f.id, f.errId));
+  if (el) el.addEventListener('change', () => clearErr(f.id, f.errId));
+});
+
+const emailEl = document.getElementById('email');
+const emailErr = document.getElementById('emailErr');
+if (emailEl) {
+  emailEl.addEventListener('input', () => {
+    if (emailErr) emailErr.textContent = '';
+    emailEl.classList.remove('error');
+  });
+}
+
+function validateForm() {
+  let valid = true;
+
+  clearErr('fullName', 'fullNameErr');
+  const nameVal = document.getElementById('fullName')?.value.trim();
+  if (!nameVal) { showErr(rules.fullName); valid = false; }
+
+  clearErr('phone', 'phoneErr');
+  const phoneVal = document.getElementById('phone')?.value.trim();
+  if (!phoneVal || phoneVal.length < 7) { showErr(rules.phone); valid = false; }
+
+  clearErr('bagType', 'bagTypeErr');
+  const bagVal = document.getElementById('bagType')?.value;
+  if (!bagVal) { showErr(rules.bagType); valid = false; }
+
+  clearErr('quantity', 'quantityErr');
+  const qtyVal = document.getElementById('quantity')?.value;
+  if (!qtyVal) { showErr(rules.quantity); valid = false; }
+
+  if (emailEl && emailErr && emailEl.value.trim()) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailEl.value.trim())) {
+      emailEl.classList.add('error');
+      emailErr.textContent = 'Please enter a valid email address.';
+      valid = false;
+    }
+  }
+
+  return valid;
+}
+
+if (orderForm && formSuccess) {
+  orderForm.addEventListener('submit', e => {
+    e.preventDefault();
+    formSuccess.classList.remove('visible');
+    formSuccess.textContent = '';
+
+    if (validateForm()) {
+      const name    = document.getElementById('fullName').value.trim();
+      const bagType = document.getElementById('bagType');
+      const bagLabel = bagType.options[bagType.selectedIndex].text;
+
+      formSuccess.textContent = `✅ Thank you, ${name}! Your order request for "${bagLabel}" has been received. Our team will contact you within 24 hours with a quote. 🌿`;
+      formSuccess.classList.add('visible');
+      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      setTimeout(() => {
+        orderForm.reset();
+        formSuccess.classList.remove('visible');
+      }, 6000);
+    } else {
+      const firstErr = orderForm.querySelector('.error');
+      if (firstErr) {
+        firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        firstErr.focus();
+      }
+    }
+  });
+
+  orderForm.addEventListener('reset', () => {
+    formSuccess.classList.remove('visible');
+    Object.values(rules).forEach(f => clearErr(f.id, f.errId));
+    if (emailEl && emailErr) { emailEl.classList.remove('error'); emailErr.textContent = ''; }
+  });
+}
+
+/* ---- 7. Smooth product card entrance on page load ---- */
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+  </script>
+</body>
+</html>
